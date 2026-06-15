@@ -49,12 +49,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 .grand-total{font-size:14px;font-weight:bold;color:#1565c0;margin-top:8px;text-align:right;}
 </style></head><body>
 <div class="tab-bar">
-<button class="tab-btn active" onclick="showTab('detail', this)">상세 보기</button>
-<button class="tab-btn" onclick="showTab('summary', this)">월간 요약</button>
+<button class="tab-btn active" onclick="showTab('detail', this)">Detail View</button>
+<button class="tab-btn" onclick="showTab('summary', this)">Monthly Summary</button>
 </div>
 <div class="tab-content active" id="tab-detail">
 <div class="filter-bar">
-<button class="filter-btn all-btn active" onclick="showGroup('ALL', this)">전체 보기</button>
+<button class="filter-btn all-btn active" onclick="showGroup('ALL', this)">All Stores</button>
 <button class="filter-btn" onclick="showGroup('tc_boh', this)">TC BOH</button>
 <button class="filter-btn" onclick="showGroup('tc_foh', this)">TC FOH</button>
 <button class="filter-btn" onclick="showGroup('mw_boh', this)">MW BOH</button>
@@ -2023,10 +2023,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <span class="name">Gayathri (New)</span>
 <span class="pos">Part Time</span>
 <span class="week-tag">W1, W2</span>
-</div><div class="total">W1: 24.5h | W2: 8.5h | Σ: 33.0h</div></div>
-<div class="week-divider"><span class="week-label">W1 — 24.5h</span></div>
+</div><div class="total">W1: 24.0h | W2: 8.5h | Σ: 32.5h</div></div>
+<div class="week-divider"><span class="week-label">W1 — 24.0h</span></div>
 <div class="days">
-<div class="day day-work"><div class="day-label">Mon<br>06/01</div><div class="time">16-22</div><div class="break">B:0h</div><div class="hrs">6.5h</div></div>
+<div class="day day-work"><div class="day-label">Mon<br>06/01</div><div class="time">16-22</div><div class="break">B:0h</div><div class="hrs">6.0h</div></div>
 <div class="day day-work"><div class="day-label">Tue<br>06/02</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.0h</div></div>
 <div class="day day-off"><div class="day-label">Wed<br>06/03</div>○</div>
 <div class="day day-off"><div class="day-label">Thu<br>06/04</div>○</div>
@@ -3259,9 +3259,9 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 </div>
 <div class="tab-content" id="tab-summary">
 <div class="summary-wrap">
-<div class="summary-title">[TC BOH] 6월 규무시간 요약</div>
+<div class="summary-title">[TC BOH] June Hours Summary</div>
 <table class="summary-table">
-<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><th>Name</th><th>Position</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr>
 <tr><td class="name-cell">Chau</td><td class="pos-cell">AKM</td><td>54.0</td><td>45.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">99.0</td></tr>
 <tr><td class="name-cell">Suji</td><td class="pos-cell">Cook</td><td>48.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">96.0</td></tr>
 <tr><td class="name-cell">Phyo</td><td class="pos-cell">Cook</td><td>48.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">96.0</td></tr>
@@ -3271,12 +3271,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">Clif</td><td class="pos-cell">Cook</td><td>48.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">96.0</td></tr>
 <tr><td class="name-cell">ARC</td><td class="pos-cell">Support</td><td>31.0</td><td>44.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">75.0</td></tr>
 </table>
-<div class="grand-total">총 규무시간: 745.0h</div>
+<div class="grand-total">Total Hours: 745.0h</div>
 </div>
 <div class="summary-wrap">
-<div class="summary-title">[TC FOH] 6월 규무시간 요약</div>
+<div class="summary-title">[TC FOH] June Hours Summary</div>
 <table class="summary-table">
-<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><th>Name</th><th>Position</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr>
 <tr><td class="name-cell">Jenny</td><td class="pos-cell">FM</td><td>39.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">93.0</td></tr>
 <tr><td class="name-cell">Lydia</td><td class="pos-cell">AM</td><td>48.5</td><td>48.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">97.0</td></tr>
 <tr><td class="name-cell">Mary</td><td class="pos-cell">Supervisor</td><td>47.5</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">95.5</td></tr>
@@ -3305,12 +3305,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">Kyle(MW)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
 <tr><td class="name-cell">Sonia (NEW)</td><td class="pos-cell">Part Time</td><td>14.0</td><td>10.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">24.0</td></tr>
 </table>
-<div class="grand-total">총 규무시간: 880.0h</div>
+<div class="grand-total">Total Hours: 880.0h</div>
 </div>
 <div class="summary-wrap">
-<div class="summary-title">[MW BOH] 6월 규무시간 요약</div>
+<div class="summary-title">[MW BOH] June Hours Summary</div>
 <table class="summary-table">
-<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><th>Name</th><th>Position</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr>
 <tr><td class="name-cell">Sake</td><td class="pos-cell">OFC</td><td>53.0</td><td>50.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">103.0</td></tr>
 <tr><td class="name-cell">Paulo</td><td class="pos-cell">AKM</td><td>10.0</td><td>53.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">63.0</td></tr>
 <tr><td class="name-cell">Chun</td><td class="pos-cell">DEMI</td><td>54.0</td><td>55.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">109.0</td></tr>
@@ -3323,12 +3323,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">John</td><td class="pos-cell">GM</td><td>44.0</td><td>44.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">88.0</td></tr>
 <tr><td class="name-cell">Junel</td><td class="pos-cell">Cook</td><td>48.0</td><td>49.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">97.0</td></tr>
 </table>
-<div class="grand-total">총 규무시간: 1023.0h</div>
+<div class="grand-total">Total Hours: 1023.0h</div>
 </div>
 <div class="summary-wrap">
-<div class="summary-title">[MW FOH] 6월 규무시간 요약</div>
+<div class="summary-title">[MW FOH] June Hours Summary</div>
 <table class="summary-table">
-<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><th>Name</th><th>Position</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr>
 <tr><td class="name-cell">Kannan</td><td class="pos-cell">OM</td><td>50.0</td><td>43.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">93.0</td></tr>
 <tr><td class="name-cell">Jenny</td><td class="pos-cell">FM</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
 <tr><td class="name-cell">Devina</td><td class="pos-cell">AM</td><td>48.5</td><td>45.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">93.5</td></tr>
@@ -3367,12 +3367,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">Faith (NEW)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
 <tr><td class="name-cell">Nicholas (NEW)</td><td class="pos-cell">Part Time</td><td>25.0</td><td>18.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">43.0</td></tr>
 </table>
-<div class="grand-total">총 규무시간: 1118.0h</div>
+<div class="grand-total">Total Hours: 1118.0h</div>
 </div>
 <div class="summary-wrap">
-<div class="summary-title">[ARC BOH] 6월 규무시간 요약</div>
+<div class="summary-title">[ARC BOH] June Hours Summary</div>
 <table class="summary-table">
-<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><th>Name</th><th>Position</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr>
 <tr><td class="name-cell">Johnny</td><td class="pos-cell">KM</td><td>54.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">108.0</td></tr>
 <tr><td class="name-cell">Ronz</td><td class="pos-cell">AKM</td><td>54.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">108.0</td></tr>
 <tr><td class="name-cell">Jason</td><td class="pos-cell">Cook</td><td>54.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">108.0</td></tr>
@@ -3382,12 +3382,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">Kyaw</td><td class="pos-cell">Cook</td><td>54.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">108.0</td></tr>
 <tr><td class="name-cell">Roberto</td><td class="pos-cell">Cook</td><td><span class="summary-empty">-</span></td><td>30.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">30.0</td></tr>
 </table>
-<div class="grand-total">총 규무시간: 758.0h</div>
+<div class="grand-total">Total Hours: 758.0h</div>
 </div>
 <div class="summary-wrap">
-<div class="summary-title">[ARC FOH] 6월 규무시간 요약</div>
+<div class="summary-title">[ARC FOH] June Hours Summary</div>
 <table class="summary-table">
-<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><th>Name</th><th>Position</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr>
 <tr><td class="name-cell">Boon</td><td class="pos-cell">Asst. Manager</td><td>49.5</td><td>48.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">98.0</td></tr>
 <tr><td class="name-cell">Jack</td><td class="pos-cell">Suppervisor</td><td>44.0</td><td>43.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">87.5</td></tr>
 <tr><td class="name-cell">Bhavani</td><td class="pos-cell">Server</td><td>31.0</td><td>47.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">78.5</td></tr>
@@ -3405,7 +3405,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">JiaTong</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
 <tr><td class="name-cell">Fiona</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
 <tr><td class="name-cell">ZiQiu</td><td class="pos-cell">Part Time</td><td>18.5</td><td>35.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">54.0</td></tr>
-<tr><td class="name-cell">Gayathri (New)</td><td class="pos-cell">Part Time</td><td>24.5</td><td>8.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">33.0</td></tr>
+<tr><td class="name-cell">Gayathri (New)</td><td class="pos-cell">Part Time</td><td>24.0</td><td>8.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">32.5</td></tr>
 <tr><td class="name-cell">JX</td><td class="pos-cell">Part Time</td><td>5.0</td><td>5.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">10.0</td></tr>
 <tr><td class="name-cell">Arthur</td><td class="pos-cell">Part Time</td><td>19.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">19.5</td></tr>
 <tr><td class="name-cell">Faith Tan (New)</td><td class="pos-cell">Part Time</td><td>8.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">8.0</td></tr>
@@ -3418,12 +3418,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">Siona (New)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>8.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">8.5</td></tr>
 <tr><td class="name-cell">Kaya (New)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>22.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">22.0</td></tr>
 </table>
-<div class="grand-total">총 규무시간: 671.5h</div>
+<div class="grand-total">Total Hours: 671.0h</div>
 </div>
 <div class="summary-wrap">
-<div class="summary-title">[CUP BOB] 6월 규무시간 요약</div>
+<div class="summary-title">[CUP BOB] June Hours Summary</div>
 <table class="summary-table">
-<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><th>Name</th><th>Position</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr>
 <tr><td class="name-cell">Chris</td><td class="pos-cell">chef</td><td>53.0</td><td>18.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">71.0</td></tr>
 <tr><td class="name-cell">Firoaus</td><td class="pos-cell">COOK</td><td>50.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">104.0</td></tr>
 <tr><td class="name-cell">Zaw Zaw</td><td class="pos-cell">COOK</td><td>48.0</td><td>50.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">98.0</td></tr>
@@ -3436,12 +3436,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">Raymond</td><td class="pos-cell">Part Time</td><td>41.0</td><td>25.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">66.0</td></tr>
 <tr><td class="name-cell">wanying</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>21.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">21.0</td></tr>
 </table>
-<div class="grand-total">총 규무시간: 744.0h</div>
+<div class="grand-total">Total Hours: 744.0h</div>
 </div>
 <div class="summary-wrap">
-<div class="summary-title">[SAM BOH] 6월 규무시간 요약</div>
+<div class="summary-title">[SAM BOH] June Hours Summary</div>
 <table class="summary-table">
-<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><th>Name</th><th>Position</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr>
 <tr><td class="name-cell">chun</td><td class="pos-cell">ass</td><td>56.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">56.0</td></tr>
 <tr><td class="name-cell">SEHUN (SOUP,B,M)</td><td class="pos-cell">COOK</td><td>54.0</td><td>56.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">110.5</td></tr>
 <tr><td class="name-cell">hong(SOUP,B)</td><td class="pos-cell">COOK</td><td>49.0</td><td>52.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">101.5</td></tr>
@@ -3455,12 +3455,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">SONY</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
 <tr><td class="name-cell">JOSEPHINE</td><td class="pos-cell">Part Time</td><td>6.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">6.0</td></tr>
 </table>
-<div class="grand-total">총 규무시간: 925.5h</div>
+<div class="grand-total">Total Hours: 925.5h</div>
 </div>
 <div class="summary-wrap">
-<div class="summary-title">[SAM FOH] 6월 규무시간 요약</div>
+<div class="summary-title">[SAM FOH] June Hours Summary</div>
 <table class="summary-table">
-<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><th>Name</th><th>Position</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>Total</th></tr>
 <tr><td class="name-cell">Daniel</td><td class="pos-cell">FM</td><td>55.5</td><td>52.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">107.5</td></tr>
 <tr><td class="name-cell">JOE INN</td><td class="pos-cell">Suppervisor</td><td>48.0</td><td>43.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">91.5</td></tr>
 <tr><td class="name-cell">CHUN HUI</td><td class="pos-cell">Suppervisor</td><td>48.0</td><td>48.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">96.5</td></tr>
@@ -3489,7 +3489,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <tr><td class="name-cell">Jessie</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
 <tr><td class="name-cell">Reshwini(NEW)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
 </table>
-<div class="grand-total">총 규무시간: 910.5h</div>
+<div class="grand-total">Total Hours: 910.5h</div>
 </div>
 </div>
 
