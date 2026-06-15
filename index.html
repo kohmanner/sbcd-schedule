@@ -4,7 +4,12 @@
 <style>
 @media print { .filter-bar { display: none; } .group-title { page-break-before: always; } .group-title:first-of-type { page-break-before: auto; } }
 body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8px;background:#f5f5f5;}
-.filter-bar{position:sticky;top:0;z-index:100;background:#1e1f22;padding:8px;display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid #333;}
+.tab-bar{position:sticky;top:0;z-index:200;background:#1e1f22;padding:8px;display:flex;gap:6px;border-bottom:1px solid #333;}
+.tab-btn{font-size:13px;padding:8px 14px;border:none;border-radius:16px;background:#333;color:#ccc;cursor:pointer;white-space:nowrap;font-weight:bold;}
+.tab-btn.active{background:#e65100;color:#fff;}
+.tab-content{display:none;}
+.tab-content.active{display:block;}
+.filter-bar{position:sticky;top:48px;z-index:100;background:#1e1f22;padding:8px;display:flex;flex-wrap:wrap;gap:6px;border-bottom:1px solid #333;}
 .filter-btn{font-size:12px;padding:6px 10px;border:none;border-radius:16px;background:#333;color:#ccc;cursor:pointer;white-space:nowrap;}
 .filter-btn.active{background:#e65100;color:#fff;}
 .filter-btn.all-btn{background:#1565c0;color:#fff;}
@@ -30,7 +35,24 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 .week-label{position:relative;z-index:1;background:white;padding:0 10px;font-size:12px;font-weight:bold;color:#666;}
 .subtitle{font-size:12px;color:#666;margin:-4px 8px 12px;}
 .week-tag{font-size:11px;color:#666;background:#e3f2fd;padding:2px 6px;border-radius:4px;margin-left:8px;}
+.summary-wrap{background:white;padding:12px;border-radius:8px;margin:8px;}
+.summary-title{font-size:16px;font-weight:bold;margin-bottom:8px;color:#111;}
+.summary-table{width:100%;border-collapse:collapse;font-size:13px;}
+.summary-table th{background:#1e1f22;color:#fff;padding:8px 6px;text-align:center;font-weight:bold;border:1px solid #333;}
+.summary-table td{padding:7px 6px;text-align:center;border:1px solid #ddd;color:#333;}
+.summary-table td.name-cell{text-align:left;font-weight:bold;}
+.summary-table td.pos-cell{text-align:left;color:#666;font-size:12px;}
+.summary-table td.total-cell{font-weight:bold;color:#e65100;background:#fff3e0;}
+.summary-table tr:nth-child(even){background:#f9f9f9;}
+.summary-table tr:hover{background:#f0f0f0;}
+.summary-empty{color:#999;font-size:12px;}
+.grand-total{font-size:14px;font-weight:bold;color:#1565c0;margin-top:8px;text-align:right;}
 </style></head><body>
+<div class="tab-bar">
+<button class="tab-btn active" onclick="showTab('detail', this)">상세 보기</button>
+<button class="tab-btn" onclick="showTab('summary', this)">월간 요약</button>
+</div>
+<div class="tab-content active" id="tab-detail">
 <div class="filter-bar">
 <button class="filter-btn all-btn active" onclick="showGroup('ALL', this)">전체 보기</button>
 <button class="filter-btn" onclick="showGroup('tc_boh', this)">TC BOH</button>
@@ -605,14 +627,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <span class="name">Sonia (NEW)</span>
 <span class="pos">Part Time</span>
 <span class="week-tag">W1, W2</span>
-</div><div class="total">W1: 14.5h | W2: 10.0h | Σ: 24.5h</div></div>
-<div class="week-divider"><span class="week-label">W1 — 14.5h</span></div>
+</div><div class="total">W1: 14.0h | W2: 10.0h | Σ: 24.0h</div></div>
+<div class="week-divider"><span class="week-label">W1 — 14.0h</span></div>
 <div class="days">
 <div class="day day-work"><div class="day-label">Mon<br>06/01</div><div class="time">17-21</div><div class="break">B:0h</div><div class="hrs">4.5h</div></div>
 <div class="day day-off"><div class="day-label">Tue<br>06/02</div>○</div>
 <div class="day day-work"><div class="day-label">Wed<br>06/03</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.0h</div></div>
 <div class="day day-off"><div class="day-label">Thu<br>06/04</div>○</div>
-<div class="day day-work"><div class="day-label">Fri<br>06/05</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.0h</div></div>
+<div class="day day-work"><div class="day-label">Fri<br>06/05</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">4.5h</div></div>
 <div class="day day-off"><div class="day-label">Sat<br>06/06</div>○</div>
 <div class="day day-off"><div class="day-label">Sun<br>06/07</div>○</div>
 </div>
@@ -1715,16 +1737,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 </div>
 </div>
 <div class="card"><div class="header"><div>
-<span class="name">Rberto</span>
+<span class="name">Roberto</span>
 <span class="pos">Cook</span>
 <span class="week-tag">W2</span>
-</div><div class="total">W2: 40.0h</div></div>
-<div class="week-divider"><span class="week-label">W2 — 40.0h</span></div>
+</div><div class="total">W2: 30.0h</div></div>
+<div class="week-divider"><span class="week-label">W2 — 30.0h</span></div>
 <div class="days">
 <div class="day day-off"><div class="day-label">Mon<br>06/08</div>○</div>
 <div class="day day-off"><div class="day-label">Tue<br>06/09</div>○</div>
 <div class="day day-off"><div class="day-label">Wed<br>06/10</div>○</div>
-<div class="day day-work"><div class="day-label">Thu<br>06/11</div><div class="time">10-22</div><div class="break">B:2h</div><div class="hrs">10.0h</div></div>
+<div class="day day-off"><div class="day-label">Thu<br>06/11</div>○</div>
 <div class="day day-work"><div class="day-label">Fri<br>06/12</div><div class="time">10-22</div><div class="break">B:2h</div><div class="hrs">10.0h</div></div>
 <div class="day day-work"><div class="day-label">Sat<br>06/13</div><div class="time">10-22</div><div class="break">B:2h</div><div class="hrs">10.0h</div></div>
 <div class="day day-work"><div class="day-label">Sun<br>06/14</div><div class="time">10-22</div><div class="break">B:2h</div><div class="hrs">10.0h</div></div>
@@ -1949,14 +1971,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <span class="name">VJ (New)</span>
 <span class="pos">Part Time</span>
 <span class="week-tag">W1, W2</span>
-</div><div class="total">W1: 18.5h</div></div>
-<div class="week-divider"><span class="week-label">W1 — 18.5h</span></div>
+</div><div class="total">W1: 19.5h</div></div>
+<div class="week-divider"><span class="week-label">W1 — 19.5h</span></div>
 <div class="days">
 <div class="day day-work"><div class="day-label">Mon<br>06/01</div><div class="time">10-16</div><div class="break">B:0h</div><div class="hrs">5.5h</div></div>
 <div class="day day-work"><div class="day-label">Tue<br>06/02</div><div class="time">11-15</div><div class="break">B:0h</div><div class="hrs">3.5h</div></div>
 <div class="day day-work"><div class="day-label">Wed<br>06/03</div><div class="time">11-15</div><div class="break">B:0h</div><div class="hrs">4.0h</div></div>
 <div class="day day-off"><div class="day-label">Thu<br>06/04</div>○</div>
-<div class="day day-work"><div class="day-label">Fri<br>06/05</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.5h</div></div>
+<div class="day day-work"><div class="day-label">Fri<br>06/05</div><div class="time">16-22</div><div class="break">B:0h</div><div class="hrs">6.5h</div></div>
 <div class="day day-off"><div class="day-label">Sat<br>06/06</div>○</div>
 <div class="day day-off"><div class="day-label">Sun<br>06/07</div>○</div>
 </div>
@@ -2157,7 +2179,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <span class="name">Dinesh</span>
 <span class="pos">Part Time</span>
 <span class="week-tag">W1, W2</span>
-</div><div class="total">W1: 9.0h | W2: 27.0h | Σ: 36.0h</div></div>
+</div><div class="total">W1: 9.0h | W2: 36.5h | Σ: 45.5h</div></div>
 <div class="week-divider"><span class="week-label">W1 — 9.0h</span></div>
 <div class="days">
 <div class="day day-off"><div class="day-label">Mon<br>06/01</div>○</div>
@@ -2168,14 +2190,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <div class="day day-off"><div class="day-label">Sat<br>06/06</div>○</div>
 <div class="day day-work"><div class="day-label">Sun<br>06/07</div><div class="time">11-22</div><div class="break">B:2h</div><div class="hrs">9.0h</div></div>
 </div>
-<div class="week-divider"><span class="week-label">W2 — 27.0h</span></div>
+<div class="week-divider"><span class="week-label">W2 — 36.5h</span></div>
 <div class="days">
 <div class="day day-work"><div class="day-label">Mon<br>06/08</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.0h</div></div>
 <div class="day day-work"><div class="day-label">Tue<br>06/09</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.5h</div></div>
 <div class="day day-work"><div class="day-label">Wed<br>06/10</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.0h</div></div>
 <div class="day day-off"><div class="day-label">Thu<br>06/11</div>○</div>
 <div class="day day-work"><div class="day-label">Fri<br>06/12</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.0h</div></div>
-<div class="day day-off"><div class="day-label">Sat<br>06/13</div>○</div>
+<div class="day day-work"><div class="day-label">Sat<br>06/13</div><div class="time">11-22</div><div class="break">B:2h</div><div class="hrs">9.5h</div></div>
 <div class="day day-work"><div class="day-label">Sun<br>06/14</div><div class="time">16-22</div><div class="break">B:0h</div><div class="hrs">6.5h</div></div>
 </div>
 </div>
@@ -2183,10 +2205,10 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <span class="name">Karan</span>
 <span class="pos">Part Time</span>
 <span class="week-tag">W1, W2</span>
-</div><div class="total">W1: 32.0h</div></div>
-<div class="week-divider"><span class="week-label">W1 — 32.0h</span></div>
+</div><div class="total">W1: 31.5h</div></div>
+<div class="week-divider"><span class="week-label">W1 — 31.5h</span></div>
 <div class="days">
-<div class="day day-work"><div class="day-label">Mon<br>06/01</div><div class="time">10-22</div><div class="break">B:2h</div><div class="hrs">10.0h</div></div>
+<div class="day day-work"><div class="day-label">Mon<br>06/01</div><div class="time">10-22</div><div class="break">B:2h</div><div class="hrs">9.5h</div></div>
 <div class="day day-work"><div class="day-label">Tue<br>06/02</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.0h</div></div>
 <div class="day day-work"><div class="day-label">Wed<br>06/03</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.0h</div></div>
 <div class="day day-work"><div class="day-label">Thu<br>06/04</div><div class="time">17-22</div><div class="break">B:0h</div><div class="hrs">5.5h</div></div>
@@ -2202,32 +2224,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 <div class="day day-off"><div class="day-label">Thu<br>06/11</div>○</div>
 <div class="day day-off"><div class="day-label">Fri<br>06/12</div>○</div>
 <div class="day day-off"><div class="day-label">Sat<br>06/13</div>○</div>
-<div class="day day-off"><div class="day-label">Sun<br>06/14</div>○</div>
-</div>
-</div>
-<div class="card"><div class="header"><div>
-<span class="name">Kumar</span>
-<span class="pos">Part Time</span>
-<span class="week-tag">W1, W2</span>
-</div><div class="total">W2: 9.5h</div></div>
-<div class="week-divider"><span class="week-label">W1 — 0.0h</span></div>
-<div class="days">
-<div class="day day-off"><div class="day-label">Mon<br>06/01</div>○</div>
-<div class="day day-off"><div class="day-label">Tue<br>06/02</div>○</div>
-<div class="day day-off"><div class="day-label">Wed<br>06/03</div>○</div>
-<div class="day day-off"><div class="day-label">Thu<br>06/04</div>○</div>
-<div class="day day-off"><div class="day-label">Fri<br>06/05</div>○</div>
-<div class="day day-off"><div class="day-label">Sat<br>06/06</div>○</div>
-<div class="day day-off"><div class="day-label">Sun<br>06/07</div>○</div>
-</div>
-<div class="week-divider"><span class="week-label">W2 — 9.5h</span></div>
-<div class="days">
-<div class="day day-off"><div class="day-label">Mon<br>06/08</div>○</div>
-<div class="day day-off"><div class="day-label">Tue<br>06/09</div>○</div>
-<div class="day day-off"><div class="day-label">Wed<br>06/10</div>○</div>
-<div class="day day-off"><div class="day-label">Thu<br>06/11</div>○</div>
-<div class="day day-off"><div class="day-label">Fri<br>06/12</div>○</div>
-<div class="day day-work"><div class="day-label">Sat<br>06/13</div><div class="time">11-22</div><div class="break">B:2h</div><div class="hrs">9.5h</div></div>
 <div class="day day-off"><div class="day-label">Sun<br>06/14</div>○</div>
 </div>
 </div>
@@ -3260,8 +3256,250 @@ body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;margin:0;padding:8p
 </div>
 
 </div>
+</div>
+<div class="tab-content" id="tab-summary">
+<div class="summary-wrap">
+<div class="summary-title">[TC BOH] 6월 규무시간 요약</div>
+<table class="summary-table">
+<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><td class="name-cell">Chau</td><td class="pos-cell">AKM</td><td>54.0</td><td>45.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">99.0</td></tr>
+<tr><td class="name-cell">Suji</td><td class="pos-cell">Cook</td><td>48.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">96.0</td></tr>
+<tr><td class="name-cell">Phyo</td><td class="pos-cell">Cook</td><td>48.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">96.0</td></tr>
+<tr><td class="name-cell">Chuan</td><td class="pos-cell">Cook</td><td>49.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">97.0</td></tr>
+<tr><td class="name-cell">Wei Kit</td><td class="pos-cell">Cook</td><td>48.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">96.0</td></tr>
+<tr><td class="name-cell">Kai yang</td><td class="pos-cell">Cook</td><td>50.0</td><td>40.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">90.0</td></tr>
+<tr><td class="name-cell">Clif</td><td class="pos-cell">Cook</td><td>48.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">96.0</td></tr>
+<tr><td class="name-cell">ARC</td><td class="pos-cell">Support</td><td>31.0</td><td>44.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">75.0</td></tr>
+</table>
+<div class="grand-total">총 규무시간: 745.0h</div>
+</div>
+<div class="summary-wrap">
+<div class="summary-title">[TC FOH] 6월 규무시간 요약</div>
+<table class="summary-table">
+<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><td class="name-cell">Jenny</td><td class="pos-cell">FM</td><td>39.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">93.0</td></tr>
+<tr><td class="name-cell">Lydia</td><td class="pos-cell">AM</td><td>48.5</td><td>48.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">97.0</td></tr>
+<tr><td class="name-cell">Mary</td><td class="pos-cell">Supervisor</td><td>47.5</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">95.5</td></tr>
+<tr><td class="name-cell">Fai</td><td class="pos-cell">Server</td><td>48.0</td><td>25.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">73.0</td></tr>
+<tr><td class="name-cell">Michael</td><td class="pos-cell">Server</td><td>54.0</td><td>55.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">109.0</td></tr>
+<tr><td class="name-cell">Yu Guan</td><td class="pos-cell">Server</td><td>47.0</td><td>47.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">94.5</td></tr>
+<tr><td class="name-cell">Devina(MW)</td><td class="pos-cell">Full Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Popo(ARC)</td><td class="pos-cell">Full Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Bhavani (ARC)</td><td class="pos-cell">Full TIme </td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Agnes(MW)</td><td class="pos-cell">Full TIme </td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Li Xuan</td><td class="pos-cell">Part Time</td><td>33.0</td><td>37.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">70.0</td></tr>
+<tr><td class="name-cell">Alice</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Sharlene</td><td class="pos-cell">Part Time</td><td>25.0</td><td>16.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">41.5</td></tr>
+<tr><td class="name-cell">Rose</td><td class="pos-cell">Part Time</td><td>38.5</td><td>43.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">82.0</td></tr>
+<tr><td class="name-cell">Josh</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Aaron</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Euodias</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Daxter</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Dennis</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Shi Ying</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Camilla</td><td class="pos-cell">Part Time</td><td>22.0</td><td>18.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">40.5</td></tr>
+<tr><td class="name-cell">Gwen</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>8.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">8.0</td></tr>
+<tr><td class="name-cell">Caroline(NEW)</td><td class="pos-cell">Part Time</td><td>22.5</td><td>13.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">36.0</td></tr>
+<tr><td class="name-cell">Maylene(New)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Brian</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>16.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">16.0</td></tr>
+<tr><td class="name-cell">Kyle(MW)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Sonia (NEW)</td><td class="pos-cell">Part Time</td><td>14.0</td><td>10.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">24.0</td></tr>
+</table>
+<div class="grand-total">총 규무시간: 880.0h</div>
+</div>
+<div class="summary-wrap">
+<div class="summary-title">[MW BOH] 6월 규무시간 요약</div>
+<table class="summary-table">
+<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><td class="name-cell">Sake</td><td class="pos-cell">OFC</td><td>53.0</td><td>50.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">103.0</td></tr>
+<tr><td class="name-cell">Paulo</td><td class="pos-cell">AKM</td><td>10.0</td><td>53.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">63.0</td></tr>
+<tr><td class="name-cell">Chun</td><td class="pos-cell">DEMI</td><td>54.0</td><td>55.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">109.0</td></tr>
+<tr><td class="name-cell">Julifer</td><td class="pos-cell">KM</td><td>55.0</td><td>51.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">106.0</td></tr>
+<tr><td class="name-cell">Julk</td><td class="pos-cell">Cook</td><td>49.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">49.0</td></tr>
+<tr><td class="name-cell">Liong</td><td class="pos-cell">Cook</td><td>51.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">99.0</td></tr>
+<tr><td class="name-cell">Wai Wah</td><td class="pos-cell">Cook</td><td>57.0</td><td>50.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">107.0</td></tr>
+<tr><td class="name-cell">Bien</td><td class="pos-cell">Chief Cook</td><td>50.0</td><td>50.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">100.0</td></tr>
+<tr><td class="name-cell">Aki</td><td class="pos-cell">Cook</td><td>49.0</td><td>53.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">102.0</td></tr>
+<tr><td class="name-cell">John</td><td class="pos-cell">GM</td><td>44.0</td><td>44.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">88.0</td></tr>
+<tr><td class="name-cell">Junel</td><td class="pos-cell">Cook</td><td>48.0</td><td>49.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">97.0</td></tr>
+</table>
+<div class="grand-total">총 규무시간: 1023.0h</div>
+</div>
+<div class="summary-wrap">
+<div class="summary-title">[MW FOH] 6월 규무시간 요약</div>
+<table class="summary-table">
+<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><td class="name-cell">Kannan</td><td class="pos-cell">OM</td><td>50.0</td><td>43.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">93.0</td></tr>
+<tr><td class="name-cell">Jenny</td><td class="pos-cell">FM</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Devina</td><td class="pos-cell">AM</td><td>48.5</td><td>45.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">93.5</td></tr>
+<tr><td class="name-cell">Michelle</td><td class="pos-cell">Supervisor</td><td>48.5</td><td>49.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">97.5</td></tr>
+<tr><td class="name-cell">Agnes</td><td class="pos-cell">Supervisor</td><td>47.5</td><td>46.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">93.5</td></tr>
+<tr><td class="name-cell">Raymond</td><td class="pos-cell">Server</td><td>45.5</td><td>44.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">90.0</td></tr>
+<tr><td class="name-cell">Andre</td><td class="pos-cell">Server</td><td><span class="summary-empty">-</span></td><td>40.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">40.5</td></tr>
+<tr><td class="name-cell">Darren</td><td class="pos-cell">Server</td><td>48.0</td><td>50.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">98.0</td></tr>
+<tr><td class="name-cell">NEW</td><td class="pos-cell">Server</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Michael (TC)</td><td class="pos-cell">Full Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">F/T</td><td class="pos-cell">Full Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Lawrence</td><td class="pos-cell">Part Time</td><td>23.0</td><td>13.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">36.0</td></tr>
+<tr><td class="name-cell">Alice</td><td class="pos-cell">Part Time</td><td>36.0</td><td>31.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">67.5</td></tr>
+<tr><td class="name-cell">Yasmin</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Sabrina</td><td class="pos-cell">Part Time</td><td>25.5</td><td>20.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">46.0</td></tr>
+<tr><td class="name-cell">Feng Hui</td><td class="pos-cell">Part Time</td><td>8.5</td><td>7.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">16.0</td></tr>
+<tr><td class="name-cell">Elwin</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Sarah Yeo</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Natalie</td><td class="pos-cell">Part Time</td><td>13.0</td><td>18.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">31.5</td></tr>
+<tr><td class="name-cell">Danni</td><td class="pos-cell">Part Time</td><td>6.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">6.0</td></tr>
+<tr><td class="name-cell">Micole</td><td class="pos-cell">Part Time</td><td>34.0</td><td>30.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">64.0</td></tr>
+<tr><td class="name-cell">Charles</td><td class="pos-cell">Part Time</td><td>33.5</td><td>23.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">57.0</td></tr>
+<tr><td class="name-cell">Narbada</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Shidy</td><td class="pos-cell">Part Time</td><td>14.5</td><td>5.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">20.0</td></tr>
+<tr><td class="name-cell">Eleri</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Toshiro</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>5.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">5.5</td></tr>
+<tr><td class="name-cell">Jacelin</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Trang</td><td class="pos-cell">Part Time</td><td>10.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">10.0</td></tr>
+<tr><td class="name-cell">Janette</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Nuritha</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>5.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">5.5</td></tr>
+<tr><td class="name-cell">Jeniffer</td><td class="pos-cell">Part Time</td><td>10.0</td><td>10.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">20.0</td></tr>
+<tr><td class="name-cell">Aaliyah</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Yu guan (NEW)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Kyle</td><td class="pos-cell">Part Time</td><td>35.0</td><td>35.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">70.5</td></tr>
+<tr><td class="name-cell">Jie er (NEW)</td><td class="pos-cell">Part Time</td><td>13.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">13.5</td></tr>
+<tr><td class="name-cell">Faith (NEW)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Nicholas (NEW)</td><td class="pos-cell">Part Time</td><td>25.0</td><td>18.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">43.0</td></tr>
+</table>
+<div class="grand-total">총 규무시간: 1118.0h</div>
+</div>
+<div class="summary-wrap">
+<div class="summary-title">[ARC BOH] 6월 규무시간 요약</div>
+<table class="summary-table">
+<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><td class="name-cell">Johnny</td><td class="pos-cell">KM</td><td>54.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">108.0</td></tr>
+<tr><td class="name-cell">Ronz</td><td class="pos-cell">AKM</td><td>54.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">108.0</td></tr>
+<tr><td class="name-cell">Jason</td><td class="pos-cell">Cook</td><td>54.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">108.0</td></tr>
+<tr><td class="name-cell">Ann Tat</td><td class="pos-cell">Cook</td><td>46.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">100.0</td></tr>
+<tr><td class="name-cell">Kim.KS</td><td class="pos-cell">Cook</td><td>44.0</td><td>44.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">88.0</td></tr>
+<tr><td class="name-cell">Benedict</td><td class="pos-cell">Cook</td><td>54.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">108.0</td></tr>
+<tr><td class="name-cell">Kyaw</td><td class="pos-cell">Cook</td><td>54.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">108.0</td></tr>
+<tr><td class="name-cell">Roberto</td><td class="pos-cell">Cook</td><td><span class="summary-empty">-</span></td><td>30.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">30.0</td></tr>
+</table>
+<div class="grand-total">총 규무시간: 758.0h</div>
+</div>
+<div class="summary-wrap">
+<div class="summary-title">[ARC FOH] 6월 규무시간 요약</div>
+<table class="summary-table">
+<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><td class="name-cell">Boon</td><td class="pos-cell">Asst. Manager</td><td>49.5</td><td>48.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">98.0</td></tr>
+<tr><td class="name-cell">Jack</td><td class="pos-cell">Suppervisor</td><td>44.0</td><td>43.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">87.5</td></tr>
+<tr><td class="name-cell">Bhavani</td><td class="pos-cell">Server</td><td>31.0</td><td>47.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">78.5</td></tr>
+<tr><td class="name-cell">Xing Wu</td><td class="pos-cell">Server</td><td>48.0</td><td>47.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">95.0</td></tr>
+<tr><td class="name-cell">FengHui (MW)</td><td class="pos-cell">Asst. Manager</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Kyle (MW)</td><td class="pos-cell">Part Time</td><td>3.0</td><td>3.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">6.5</td></tr>
+<tr><td class="name-cell">Raymond (MW)</td><td class="pos-cell">Full Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Charles (MW)</td><td class="pos-cell">Full Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Darren (MW)</td><td class="pos-cell">Full Time</td><td>3.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">3.5</td></tr>
+<tr><td class="name-cell">Fai (TC)</td><td class="pos-cell">Full Time</td><td>6.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">6.5</td></tr>
+<tr><td class="name-cell">IlsaAng (New)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Matthew (New)</td><td class="pos-cell">Part Time</td><td>4.0</td><td>4.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">8.0</td></tr>
+<tr><td class="name-cell">Rina (New)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">VJ (New)</td><td class="pos-cell">Part Time</td><td>19.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">19.5</td></tr>
+<tr><td class="name-cell">JiaTong</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Fiona</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">ZiQiu</td><td class="pos-cell">Part Time</td><td>18.5</td><td>35.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">54.0</td></tr>
+<tr><td class="name-cell">Gayathri (New)</td><td class="pos-cell">Part Time</td><td>24.5</td><td>8.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">33.0</td></tr>
+<tr><td class="name-cell">JX</td><td class="pos-cell">Part Time</td><td>5.0</td><td>5.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">10.0</td></tr>
+<tr><td class="name-cell">Arthur</td><td class="pos-cell">Part Time</td><td>19.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">19.5</td></tr>
+<tr><td class="name-cell">Faith Tan (New)</td><td class="pos-cell">Part Time</td><td>8.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">8.0</td></tr>
+<tr><td class="name-cell">WilsonLim (New)</td><td class="pos-cell">Part Time</td><td>20.0</td><td>11.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">31.0</td></tr>
+<tr><td class="name-cell">Hui En</td><td class="pos-cell">Part Time</td><td>5.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">5.5</td></tr>
+<tr><td class="name-cell">Gerlinde Lim</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Dinesh</td><td class="pos-cell">Part Time</td><td>9.0</td><td>36.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">45.5</td></tr>
+<tr><td class="name-cell">Karan</td><td class="pos-cell">Part Time</td><td>31.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">31.5</td></tr>
+<tr><td class="name-cell">Kumar</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Siona (New)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>8.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">8.5</td></tr>
+<tr><td class="name-cell">Kaya (New)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>22.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">22.0</td></tr>
+</table>
+<div class="grand-total">총 규무시간: 671.5h</div>
+</div>
+<div class="summary-wrap">
+<div class="summary-title">[CUP BOB] 6월 규무시간 요약</div>
+<table class="summary-table">
+<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><td class="name-cell">Chris</td><td class="pos-cell">chef</td><td>53.0</td><td>18.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">71.0</td></tr>
+<tr><td class="name-cell">Firoaus</td><td class="pos-cell">COOK</td><td>50.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">104.0</td></tr>
+<tr><td class="name-cell">Zaw Zaw</td><td class="pos-cell">COOK</td><td>48.0</td><td>50.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">98.0</td></tr>
+<tr><td class="name-cell">Vincent</td><td class="pos-cell">manage</td><td>56.0</td><td>54.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">110.0</td></tr>
+<tr><td class="name-cell">Joshua</td><td class="pos-cell">Supervisor</td><td>49.0</td><td>48.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">97.0</td></tr>
+<tr><td class="name-cell">Jacelin</td><td class="pos-cell">Part Time</td><td>21.0</td><td>26.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">47.0</td></tr>
+<tr><td class="name-cell">Shahani</td><td class="pos-cell">Part Time</td><td>31.0</td><td>24.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">55.0</td></tr>
+<tr><td class="name-cell">Agnes(MW)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Keiko</td><td class="pos-cell">Part Time</td><td>49.0</td><td>26.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">75.0</td></tr>
+<tr><td class="name-cell">Raymond</td><td class="pos-cell">Part Time</td><td>41.0</td><td>25.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">66.0</td></tr>
+<tr><td class="name-cell">wanying</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>21.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">21.0</td></tr>
+</table>
+<div class="grand-total">총 규무시간: 744.0h</div>
+</div>
+<div class="summary-wrap">
+<div class="summary-title">[SAM BOH] 6월 규무시간 요약</div>
+<table class="summary-table">
+<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><td class="name-cell">chun</td><td class="pos-cell">ass</td><td>56.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">56.0</td></tr>
+<tr><td class="name-cell">SEHUN (SOUP,B,M)</td><td class="pos-cell">COOK</td><td>54.0</td><td>56.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">110.5</td></tr>
+<tr><td class="name-cell">hong(SOUP,B)</td><td class="pos-cell">COOK</td><td>49.0</td><td>52.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">101.5</td></tr>
+<tr><td class="name-cell">tedKIM (B)</td><td class="pos-cell">COOK</td><td>51.0</td><td>51.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">102.0</td></tr>
+<tr><td class="name-cell">yongsheng(M,SOUP)</td><td class="pos-cell">COOK</td><td>60.0</td><td>60.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">120.5</td></tr>
+<tr><td class="name-cell">kit same(M,SIDE)</td><td class="pos-cell">COOK</td><td>51.0</td><td>50.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">101.5</td></tr>
+<tr><td class="name-cell">jie(M,SIDE)</td><td class="pos-cell">COOK</td><td>52.0</td><td>50.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">102.5</td></tr>
+<tr><td class="name-cell">CHOON FUNG(M,B)</td><td class="pos-cell">COOK</td><td>49.5</td><td>50.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">99.5</td></tr>
+<tr><td class="name-cell">mai (M,SIDE)</td><td class="pos-cell">COOK</td><td>51.0</td><td>50.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">101.5</td></tr>
+<tr><td class="name-cell">MELISA</td><td class="pos-cell">Part Time</td><td>18.0</td><td>6.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">24.0</td></tr>
+<tr><td class="name-cell">SONY</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">JOSEPHINE</td><td class="pos-cell">Part Time</td><td>6.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">6.0</td></tr>
+</table>
+<div class="grand-total">총 규무시간: 925.5h</div>
+</div>
+<div class="summary-wrap">
+<div class="summary-title">[SAM FOH] 6월 규무시간 요약</div>
+<table class="summary-table">
+<tr><th>이름</th><th>직책</th><th>W1</th><th>W2</th><th>W3</th><th>W4</th><th>W5</th><th>합계</th></tr>
+<tr><td class="name-cell">Daniel</td><td class="pos-cell">FM</td><td>55.5</td><td>52.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">107.5</td></tr>
+<tr><td class="name-cell">JOE INN</td><td class="pos-cell">Suppervisor</td><td>48.0</td><td>43.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">91.5</td></tr>
+<tr><td class="name-cell">CHUN HUI</td><td class="pos-cell">Suppervisor</td><td>48.0</td><td>48.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">96.5</td></tr>
+<tr><td class="name-cell">JASON</td><td class="pos-cell">Full Time</td><td>48.0</td><td>52.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">100.0</td></tr>
+<tr><td class="name-cell">POPO</td><td class="pos-cell">Full Time</td><td>52.0</td><td>40.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">92.0</td></tr>
+<tr><td class="name-cell">Shafiee</td><td class="pos-cell">Full Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">XIN EN</td><td class="pos-cell">Full Time</td><td>42.0</td><td>42.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">84.5</td></tr>
+<tr><td class="name-cell">HARRIS</td><td class="pos-cell">Full Time</td><td>35.5</td><td>29.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">64.5</td></tr>
+<tr><td class="name-cell">BOON</td><td class="pos-cell">Full Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">FAI</td><td class="pos-cell">Full Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">EVE</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">GERLINDE</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>5.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">5.0</td></tr>
+<tr><td class="name-cell">JIA YUE</td><td class="pos-cell">Part Time</td><td>21.5</td><td>18.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">39.5</td></tr>
+<tr><td class="name-cell">WEI CONG</td><td class="pos-cell">Part Time</td><td>13.0</td><td>14.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">27.5</td></tr>
+<tr><td class="name-cell">Jin Yan</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Wendy</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>12.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">12.0</td></tr>
+<tr><td class="name-cell">NERI</td><td class="pos-cell">Part Time</td><td>36.0</td><td>27.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">63.5</td></tr>
+<tr><td class="name-cell">NORA</td><td class="pos-cell">Part Time</td><td>8.5</td><td>9.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">17.5</td></tr>
+<tr><td class="name-cell">KAI</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">YX</td><td class="pos-cell">Part Time</td><td>18.5</td><td>13.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">31.5</td></tr>
+<tr><td class="name-cell">Mariana</td><td class="pos-cell">Part Time</td><td>27.5</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">27.5</td></tr>
+<tr><td class="name-cell">Jin Woo</td><td class="pos-cell">Part Time</td><td>12.0</td><td>26.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">38.0</td></tr>
+<tr><td class="name-cell">DEBBIE</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>6.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">6.0</td></tr>
+<tr><td class="name-cell">CINDY</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td>6.0</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">6.0</td></tr>
+<tr><td class="name-cell">Lavie</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Jessie</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+<tr><td class="name-cell">Reshwini(NEW)</td><td class="pos-cell">Part Time</td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td><span class="summary-empty">-</span></td><td class="total-cell">0.0</td></tr>
+</table>
+<div class="grand-total">총 규무시간: 910.5h</div>
+</div>
+</div>
 
 <script>
+function showTab(tabId, btn) {
+    document.querySelectorAll('.tab-content').forEach(function(el) { el.classList.remove('active'); });
+    document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btn.classList.add('active');
+}
 function showGroup(gid, btn) {
     document.querySelectorAll('.group').forEach(function(el) {
         el.classList.remove('active');
